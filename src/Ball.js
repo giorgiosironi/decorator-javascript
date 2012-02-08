@@ -4,24 +4,23 @@ function Ball() {
     }
 }
 
-Blinking = {};
-Blinking.decorate = function(originalBall) {
-    newBallConstructor = function() {
-        this.canBlink = function() {
-            return true;
-        };
+createDecorator = function(newConstructor) {
+    return function(originalObject) {
+        newConstructor.prototype = originalObject;
+        return new newConstructor();
     };
-    newBallConstructor.prototype = originalBall;
-    return new newBallConstructor();
-}
+};
+
+Blinking = {};
+Blinking.decorate = createDecorator(function() {
+    this.canBlink = function() {
+        return true;
+    };
+});
 
 Jumping = {};
-Jumping.decorate = function(originalBall) {
-    newBallConstructor = function() {
-        this.canJump = function() {
-            return true;
-        };
+Jumping.decorate = createDecorator(function() {
+    this.canJump = function() {
+        return true;
     };
-    newBallConstructor.prototype = originalBall;
-    return new newBallConstructor();
-}
+});
