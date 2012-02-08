@@ -14,3 +14,14 @@ Blinking.decorate = function(originalBall) {
     newBallConstructor.prototype = originalBall;
     return new newBallConstructor();
 }
+
+Jumping = {};
+Jumping.decorate = function(originalBall) {
+    newBallConstructor = function() {
+        this.canJump = function() {
+            return true;
+        };
+    };
+    newBallConstructor.prototype = originalBall;
+    return new newBallConstructor();
+}
