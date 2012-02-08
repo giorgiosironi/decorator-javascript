@@ -13,6 +13,10 @@ createDecorator = function(newConstructor) {
 
 Blinking = {};
 Blinking.decorate = createDecorator(function() {
+    oldWhat = this.what;
+    this.what = function() {
+        return oldWhat.apply(this) + " (and I can blink)";
+    }
     this.canBlink = function() {
         return true;
     };

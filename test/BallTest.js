@@ -5,7 +5,7 @@ TestCase("basic Ball object test", {
     },
     "test a blinking ball is a ball that can blink" : function () {
          var ball = Blinking.decorate(new Ball());
-         assertEquals("I am a ball", ball.what());
+         assertEquals("I am a ball (and I can blink)", ball.what());
          assertTrue(ball.canBlink());
     },
     "test a jumping ball is a ball that can jump" : function () {
@@ -15,7 +15,7 @@ TestCase("basic Ball object test", {
     },
     "test a blinking&jumping ball is a ball that can do both" : function () {
          var ball = Blinking.decorate(Jumping.decorate(new Ball()));
-         assertEquals("I am a ball", ball.what());
+         assertEquals("I am a ball (and I can blink)", ball.what());
          assertTrue(ball.canBlink());
          assertTrue(ball.canJump());
     }
